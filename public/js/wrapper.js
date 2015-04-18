@@ -101,8 +101,7 @@ LH.Wrapper = function( o ) {
     }
 
     var earth = new THREE.Mesh( geometry.earth, material.earthTex );
-
-    // o.scene.add(earth)
+    o.scene.add(earth)
 
     var selarr = [];
 
