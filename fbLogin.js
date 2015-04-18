@@ -6,12 +6,20 @@ module.exports.process = function(request, response) {
 
 
   graph.get('/me/music', {}, function(err, res) {
-    response.send(res);
-    if(res.paging && res.paging.next) {
+    var musicPages = [];
+    var paging = res.paging;
+
+    var i = 0;
+    while(paging && paging.next) {
+      if(i === 3) break; // test
       graph.get(res.paging.next, function(err, res) {
-        // page 2
+        paging = res.paging;
+        musicPages.concat(res.data);    
       });
+      i += 1;
     }
+
+    response.send(musicPages);
   });
 
 };
