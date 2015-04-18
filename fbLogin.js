@@ -39,6 +39,7 @@ module.exports.process = function(request, response) {
 
   var user_exists = false;
   if(!user_exists) {
+    user = new User();
     user.set('first_name', user_details.first_name);
     user.set('last_name', user_details.last_name);
     user.set('id', user_details.id);
