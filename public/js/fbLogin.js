@@ -14,16 +14,13 @@ window.fbAsyncInit = function() {
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
+      $('#status').text('Logged in from your Facebook - redirecting to app!')
       var access_token =   FB.getAuthResponse()['accessToken'];
       console.log('Access Token = '+ access_token);
       redirectWithToken(access_token);
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      //doLogin();
     } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      //doLogin();
+      $('#status').text("Please login with Facebook to continue :-)");
+      $('#fblogin').show();
     }
   });
 };
@@ -41,12 +38,9 @@ var doLogin = function() {
      var access_token =   FB.getAuthResponse()['accessToken'];
      console.log('Access Token = '+ access_token);
      redirectWithToken(access_token);
-     FB.api('/me/music', function(response) {
-     console.log('Good to see you, ' + JSON.stringify(response) + '.');
-     });
    } else {
      console.log('User cancelled login or did not fully authorize.');
    }
- }, {response_type: 'token', scope: 'public_profile,user_likes,user_actions:music' });
-
+ }, {response_type: 'token', scope: 'public_profile,user_likes' });
+//user_actions:music
 }

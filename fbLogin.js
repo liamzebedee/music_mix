@@ -17,7 +17,6 @@ module.exports.process = function(request, response) {
 
       var i = 0;
       while(paging && paging.next) {
-        if(i === 3) break; // test
         graph.get(paging.next, function(err, res) {
           paging = res.paging;
           musicPages.concat(res.data);

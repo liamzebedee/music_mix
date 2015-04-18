@@ -10,14 +10,14 @@ module.exports.process = function(request, response) {
 			lat: 121,
 			lng: 121
 		},
-		user_id: 123213213213
+		fbid: 123213213213
 
 	}
 	*/
 
 	// Find user, update their location
 	var user_query = Parse.Query("User");
-	user_query.equalTo('id', data.user_id);
+	user_query.equalTo('fbid', data.user_id);
 	var user = null;
 	query.find({success: function(found) {
 		user = found;
