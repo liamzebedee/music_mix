@@ -6,7 +6,7 @@ module.exports.process = function(request, response) {
   var access_token = request.query.token;
   graph.setAccessToken(access_token);
 
-  graph.get('/me', {}, function(err, res) {
+  graph.get('/me', { fields: 'about,name,first_name,last_name' }, function(err, res) {
     console.log('person '+res);
   });
 
