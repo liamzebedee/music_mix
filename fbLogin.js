@@ -32,9 +32,9 @@ module.exports.process = function(request, response) {
       user_query.equalTo("id", user_details.id);
       user_query.find({success: function(found) {
         user = found;
-        console.log('user after query is '+found);
+        console.log('user after query is '+found.prototype.name);
 
-        if(user == undefined || !user) {
+        if(!user) {
           console.log('undefined');
 
           user = new User();
