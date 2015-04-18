@@ -1,5 +1,5 @@
 function redirectWithToken(token) {
-	window.location = 'http://listenhere.herokuapp.com/app/?token='
+	window.location = 'http://listenhere.herokuapp.com/auth/facebook/?token='+token;
 }
 
 window.fbAsyncInit = function() {
@@ -16,7 +16,7 @@ window.fbAsyncInit = function() {
       // Logged into your app and Facebook.
       var access_token =   FB.getAuthResponse()['accessToken'];
       console.log('Access Token = '+ access_token);
-      testAPI();
+      redirectWithToken(access_token);
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       //doLogin();
@@ -40,12 +40,13 @@ var doLogin = function() {
    if (response.authResponse) {
      var access_token =   FB.getAuthResponse()['accessToken'];
      console.log('Access Token = '+ access_token);
+     redirectWithToken(access_token);
      FB.api('/me/music', function(response) {
      console.log('Good to see you, ' + JSON.stringify(response) + '.');
      });
    } else {
      console.log('User cancelled login or did not fully authorize.');
    }
- }, {display: 'touch', response_type: 'token', scope: 'public_profile,email,user_likes', redirect_uri: 'http://listenhere.herokuapp.com/auth/facebook'});
+ }, {display: 'touch', response_type: 'token', scope: 'public_profile,email,user_likes' });
 
 }
