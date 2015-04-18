@@ -18,11 +18,15 @@
     <script src="js/wrapper.js"></script>
 </head>
 <body>
+
     <div id="container">
         <div class="notify"><img src="img/load.gif"><br/><br/>Loading...</div>
     </div>
+    <div id="info">
+    </div>
     <script type="text/javascript">   
 
+        $("#info").hide();
         $("#container").height($(window).height()*(5/7));
 
         var bootstrap = new THREE.Strap( document.getElementById("container") );
