@@ -4,7 +4,7 @@ var express = require('express');
 var app 	= express();
 var server 	= app.listen(PORT);
 var io		= require('socket.io').listen(server);
-var graph     = require('fbgraph');
+var graph   = require('fbgraph');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -21,9 +21,6 @@ var conf = {
 
 // constants
 
-var FB_APP_ID = 474840302668268;
-var FB_SECRET = "f0613480861a06dc54ac517b5730d5c4";
-
 var PARSE_APP_ID = '6g5rdM4QiKNQwXMCrr8tvEuHpad7mdYsjbgLRUhA';
 var PARSE_JS_KEY = 'KKRi6LU0KSyfVuKxA7xjfVTBCUpKg8vNVdjEyZGz';
 
@@ -32,6 +29,11 @@ var PARSE_JS_KEY = 'KKRi6LU0KSyfVuKxA7xjfVTBCUpKg8vNVdjEyZGz';
 var lhChat = require('./chat.js');
 var lhNearMe = require('./findNearMe.js');
 var fbLogin = require('./fbLogin.js');
+
+io.on('connection', function(socket) {
+	console.log(socket.client);
+	// lhChat.new(socket);
+})
 
 // routing
 
