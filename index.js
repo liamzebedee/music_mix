@@ -17,7 +17,7 @@ io.on('connection', function(socket) {
 
         user[socket.client] = {
             alias: '' + Math.random()*1000,
-            online: true;
+            online: true,
         }
 
     }
@@ -27,14 +27,14 @@ io.on('connection', function(socket) {
     }
 
     socket.join('chat');
-    io.in('chat').emit('join', {alias: user[socket.client].alias});
+    io.in('chat').emit('join', {user: user[socket.client].alias});
 
     socket.on('msg', function(msg){
-        io.emit('msg', msg);
+        io.emit('msg', {user: user[socket.client].alias, msg: msg});
     });
 
     socket.on('disconnect', function() {
-        socket.broadcast.to('chat').emit('leave', {alias: user[socket.client].alias});
+        socket.broadcast.to('chat').emit('leave', {user: user[socket.client].alias});
     });
 
 })
