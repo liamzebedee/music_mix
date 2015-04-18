@@ -32,18 +32,29 @@ module.exports.process = function(request, response) {
       user_query.equalTo("id", user_details);
       user_query.find({success: function(found) {
         user = found;
+
+        if(!user) {
+          user = new User();
+          user.set('first_name', user_details.first_name);
+          user.set('last_name', user_details.last_name);
+          user.set('id', user_details.id);
+          user.set('music', musicPages);
+          user.save(null, {
+            success: function(user) {
+              // Execute any logic that should take place after the object is saved.
+              alert('New object created with objectId: ' + user.id);
+            },
+            error: function(user, error) {
+              // Execute any logic that should take place if the save fails.
+              // error is a Parse.Error with an error code and message.
+              alert('Failed to create new object, with error code: ' + error.message);
+            }
+          });
+        }
+        response.send(user);
       }});
 
-      var user_exists = false;
-      if(!user_exists) {
-        user = new User();
-        user.set('first_name', user_details.first_name);
-        user.set('last_name', user_details.last_name);
-        user.set('id', user_details.id);
-        user.set('music', musicPages);
-        user.save();
-      }
-      response.send(user);
+      
     });
 
   });
