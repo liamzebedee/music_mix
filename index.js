@@ -25,7 +25,7 @@ var PARSE_JS_KEY = 'KKRi6LU0KSyfVuKxA7xjfVTBCUpKg8vNVdjEyZGz';
 
 // internals
 
-var lhChat = require('./chat.js');
+// var lhChat = require('./chat.js');
 var lhNearMe = require('./findNearMe.js');
 var fbLogin = require('./fbLogin.js');
 
