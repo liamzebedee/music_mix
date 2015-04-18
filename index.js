@@ -27,10 +27,10 @@ io.on('connection', function(socket) {
     }
 
     socket.join('chat');
-    io.in('chat').emit('join', {alias: user[socket.client].alias});
+    io.in('chat').emit('join', {user: user[socket.client].alias});
 
     socket.on('msg', function(msg){
-        io.emit('msg', {user: user[socket.client].alias, msg: obj.msg});
+        io.emit('msg', {user: user[socket.client].alias, msg: msg});
     });
 
     socket.on('disconnect', function() {
