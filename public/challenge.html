@@ -47,28 +47,103 @@
 </div>
 
 <style>
-#notepad {
-    background: transparent;
-    width: 800px;
-    height: 800px;
+.wide-as-needed {
+  overflow: scroll;
+  white-space: nowrap;
+}
+.scroll { 
+  min-width: 100%;
 }
 
-.arc {
-    fill: #999;
-    stroke: #888;
-    cursor: pointer;
+/* 
+ * make the content's top changes animate.
+ * might not always look good, but looks
+ * good when our loader is added & removed
+ */
+.has-header {
+  -webkit-transition: 200ms top;
+}
+.has-header.has-loading {
+  /* 44px (header) + 24px */
+  top: 68px;
 }
 
-.arc:hover {
-    fill: #777;
-    stroke: #666;
+/* make loading bar slide up/down */
+.bar-loading.ng-enter,
+.bar-loading.ng-leave.ng-leave-active {
+  height: 0;
+  border-width: 0px;
 }
-
-#activeArc {
-    fill: #F18B21 !important;
-    stroke: #b86a19 !important;
+.bar-loading.ng-enter.ng-enter-active,
+.bar-loading.ng-leave {
+  height: 24px;
+  border-width: 1px;
 }
 </style>
+
+<h2>Rock</h2>
+<div class="scroll wide-as-needed">
+
+
+<div class="list card">
+  <div class="item item-avatar">
+      <h2>1. Uptown Funk!</h2>
+      <p>Mark Ronson Ft. Bruno Mars</p>
+  </div>
+
+  <div class="item item-image">
+    <img src="images/one.jpg">
+  </div>
+</div>
+
+<div class="list card">
+  <div class="item item-avatar">
+      <h2>2. Thinking Out Loud</h2>
+      <p>Ed Sheeran</p>
+  </div>
+
+  <div class="item item-image">
+    <img src="images/two.jpg">
+  </div>
+</div>
+
+<div class="list card">
+  <div class="item item-avatar">
+      <h2>3. Style</h2>
+      <p>Taylor Swift</p>
+  </div>
+
+  <div class="item item-image">
+    <img src="images/three.jpg">
+  </div>
+</div>
+
+<div class="list card">
+  <div class="item item-avatar">
+      <h2>4. One Last Time</h2>
+      <p>Ariana Grande</p>
+  </div>
+
+  <div class="item item-image">
+    <img src="images/four.jpg">
+  </div>
+</div>
+
+<div class="list card">
+  <div class="item item-avatar">
+      <h2>5. Heartbeat Song</h2>
+      <p>Kelly Clarkson</p>
+  </div>
+
+  <div class="item item-image">
+    <img src="images/five.jpg">
+  </div>
+</div>
+
+</div>
+
+<h2>Hip-hop</h2>
+
 
 <center><div id='notepad'></div></center>
 <!-- I'm so sorry. -->
