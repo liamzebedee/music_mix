@@ -32,15 +32,15 @@
       });
 
       socket.on('message', function(obj){
-        $('#messages').append($('<li>').text(obj.user + ': ' + obj.message));
+        $('#messages').append($('<li>').text(obj.name + ': ' + obj.message));
       });
 
       socket.on('join', function(obj){
-        $('#messages').append($('<li>').text(obj.user + ' ... has joined the chat.'));
+        $('#messages').append($('<li>').text(obj.name + ' ... has joined the chat.'));
       });
 
       socket.on('disconnect', function(obj){
-        $('#messages').append($('<li>').text(obj.user + ' ... has left the chat.'));
+        $('#messages').append($('<li>').text(obj.name + ' ... has left the chat.'));
       });
       
     </script>

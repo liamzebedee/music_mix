@@ -22,15 +22,15 @@ io.on('connection', function(socket) {
     socket.join('chat');
 
     socket.on('join', function(obj) {
-        socket.broadcast.to('chat').emit('join', user[socket.id]);
+        socket.broadcast.to('chat').emit('join', {name: user[socket.id].name});
     })
 
     socket.on('message', function(obj){
-        io.emit('message', {user: user[socket.id], message: obj.message});
+        io.emit('message', {name: user[socket.id].name, message: obj.message});
     });
 
     socket.on('disconnect', function() {
-        socket.broadcast.to('chat').emit('leave', user[socket.id]);
+        socket.broadcast.to('chat').emit('leave', {name: user[socket.id].name});
     });
 
 })
