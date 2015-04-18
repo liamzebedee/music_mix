@@ -32,7 +32,7 @@ graph.get('/me/music', {}, function(err, firstMusicRes) {
     });
 
 
-  res.send(stuffToSend);
+  response.send(stuffToSend);
 };
 
   // // we don't have a code yet
