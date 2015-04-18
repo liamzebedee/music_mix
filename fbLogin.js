@@ -1,5 +1,5 @@
 var graph = require('fbgraph');
-var Parse = new require('./parse-api.js');
+var Parse = require('parse').Parse;
 Parse.initialize("6g5rdM4QiKNQwXMCrr8tvEuHpad7mdYsjbgLRUhA", "KKRi6LU0KSyfVuKxA7xjfVTBCUpKg8vNVdjEyZGz");
 
 module.exports.process = function(request, response) {
