@@ -16,7 +16,7 @@ var conf = {
     client_id:      '474840302668268'
   , client_secret:  'f0613480861a06dc54ac517b5730d5c4'
   , scope:          'email, user_about_me'
-  , redirect_uri:   'http://listenhere.herokuapp.com/app/'
+  , redirect_uri:   'http://listenhere.herokuapp.com/auth/facebook'
 };
 
 // constants
