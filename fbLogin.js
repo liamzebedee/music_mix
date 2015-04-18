@@ -31,10 +31,10 @@ module.exports.process = function(request, response) {
       var user_query = new Parse.Query(User);
       user_query.equalTo("id", user_details.id);
       user_query.find({success: function(found) {
-        user = found;
+        user = found[0];
         console.log('user after query is '+JSON.stringify(found));
 
-        if(user.length) {
+        if(!user) {
           console.log('undefined');
 
           user = new User();
