@@ -5,16 +5,16 @@ module.exports.process = function(request, response) {
   graph.setAccessToken(access_token);
 
 
-  graph.get('/me/music', {}, function(err, res) {
-    var musicPages = [];
-    var paging = res.paging;
+  graph.get('/me/music', {}, function(err, firstMusicRes) {
+    var musicPages = firstMusicRes.data;
+    var paging = firstMusicRes.paging;
 
     var i = 0;
     while(paging && paging.next) {
       if(i === 3) break; // test
-      graph.get(res.paging.next, function(err, res) {
+      graph.get(paging.next, function(err, res) {
         paging = res.paging;
-        musicPages.concat(res.data);    
+        musicPages.concat(res.data);
       });
       i += 1;
     }
