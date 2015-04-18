@@ -27,8 +27,8 @@
         $('#m').val('');
         return false;
       });
-      socket.on('msg', function(msg){
-        $('#messages').append($('<li>').text(msg));
+      socket.on('msg', function(obj){
+        $('#messages').append($('<li>').text(obj.user + ': ' + obj.msg));
       });
     </script>
   </body>
