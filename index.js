@@ -84,6 +84,9 @@ var findNearMe = require('./findNearMe.js');
 var fbLogin = require('./fbLogin.js');
 var chat = require('./chat.js');
 
+app.get('/', function(request, response) {
+	response.send('/hack');
+});
 
 app.get('/fb_login', function(request, response) {
 	fbLogin.process(request, response);
