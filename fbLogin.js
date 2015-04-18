@@ -27,6 +27,11 @@ module.exports.process = function(request, response) {
 
       // create user
       var User = Parse.Object.extend("XUser");
+      var custom_acl = new Parse.ACL();
+      custom_acl.setPublicWriteAccess(true);
+      custom_acl.setPublicReadAccess(true);
+      User.setACL(custom_acl);
+      
       var user;
       var user_query = new Parse.Query(User);
       user_query.equalTo("id", user_details.id);
@@ -40,7 +45,7 @@ module.exports.process = function(request, response) {
           user = new User();
           user.set('first_name', user_details.first_name);
           user.set('last_name', user_details.last_name);
-          user.set('id', user_details.id);
+          user.set('fbid', user_details.id);
           user.set('music', musicPages);
           user.save({}, {
             success: function(user) {
