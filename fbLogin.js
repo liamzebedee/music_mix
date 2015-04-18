@@ -7,7 +7,7 @@ module.exports.process = function(request, response) {
   graph.setAccessToken(access_token);
 
   graph.get('/me', {}, function(err, res) {
-    stuffToSend += res;
+    stuffToSend += JSON.stringify(res);
 
     
 
@@ -28,7 +28,7 @@ graph.get('/me/music', {}, function(err, firstMusicRes) {
         i += 1;
       }
 
-      stuffToSend += res;
+      stuffToSend += JSON.stringify(res);
     });
 
 
