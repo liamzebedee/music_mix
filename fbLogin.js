@@ -6,7 +6,7 @@ module.exports.process = function(request, response) {
 
 
   graph.get('/me/music', {}, function(err, res) {
-    respnse.send(res);
+    response.send(res);
     if(res.paging && res.paging.next) {
       graph.get(res.paging.next, function(err, res) {
         // page 2
