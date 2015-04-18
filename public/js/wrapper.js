@@ -125,7 +125,7 @@ LH.Wrapper = function( o ) {
 
         for (var i = 0; i < selarr.length; i++) {
             if (selarr[i] == hover) {
-                selarr[i].scale.set( 3, 3, 3 );
+                selarr[i].scale.set( 2, 2, 2 );
                 selarr[i].material.opacity = 1;
             } else {
                 selarr[i].scale.set( 1, 1, 1 );
