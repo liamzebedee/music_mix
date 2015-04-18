@@ -1,7 +1,5 @@
-var Parse = require('node-parse-api').Parse({
-    app_id: '6g5rdM4QiKNQwXMCrr8tvEuHpad7mdYsjbgLRUhA',
-    api_key: 'KKRi6LU0KSyfVuKxA7xjfVTBCUpKg8vNVdjEyZGz'
-});
+var Parse = new require('./parse-api.js');
+Parse.initialize("6g5rdM4QiKNQwXMCrr8tvEuHpad7mdYsjbgLRUhA", "KKRi6LU0KSyfVuKxA7xjfVTBCUpKg8vNVdjEyZGz");
 
 module.exports.process = function(request, response) {
 	var data = JSON.parse(request);
