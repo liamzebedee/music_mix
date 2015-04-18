@@ -24,7 +24,7 @@ io.on('connection', function(socket) {
     });
 
     socket.on('disconnect', function() {
-        socket.broadcast.to('chat').emit('leave', {user: user[socket.client].alias});
+        socket.broadcast.to('chat').emit('leave');
     });
 
 })
