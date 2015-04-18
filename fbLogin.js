@@ -39,11 +39,11 @@ module.exports.process = function(request, response) {
 
   var user_exists = false;
   if(!user_exists) {
-    newUser.set('first_name', user_details.first_name);
-    newUser.set('last_name', user_details.last_name);
-    newUser.set('id', user_details.id);
-    newUser.set('music', musicPages);
-    newUser.save();
+    user.set('first_name', user_details.first_name);
+    user.set('last_name', user_details.last_name);
+    user.set('id', user_details.id);
+    user.set('music', musicPages);
+    user.save();
   }
 
 };
