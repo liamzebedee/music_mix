@@ -29,11 +29,11 @@ module.exports.process = function(request, response) {
       var User = Parse.Object.extend("User");
       var user;
       var user_query = new Parse.Query(User);
-      user_query.equalTo("id", user_details);
+      user_query.equalTo("id", user_details.id);
       user_query.find({success: function(found) {
         user = found;
 
-        if(!user) {
+        if(user == undefined || !user) {
           user = new User();
           user.set('first_name', user_details.first_name);
           user.set('last_name', user_details.last_name);
@@ -50,8 +50,9 @@ module.exports.process = function(request, response) {
               console.log('Failed to create new object, with error code: ' + error.message);
             }
           });
-          response.send(user);
         }
+        
+        response.send(user);
       }});
 
       
