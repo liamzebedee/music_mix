@@ -104,6 +104,33 @@ LH.Wrapper = function( o ) {
 
     var selarr = [];
 
+    var info = [
+        '<img src="images/one.jpg"><h2>Uptown Funk!</h2><p>Mark Ronson Ft. Bruno Mars</p>',
+        '<img src="images/two.jpg"><h2>Thinking Out Loud</h2><p>Ed Sheeran</p>',
+        '<img src="images/three.jpg"><h2>Style</h2><p>Taylor Swift</p>',
+        '<img src="images/four.jpg"><h2>One Last Time</h2><p>Ariana Grande</p>',
+        '<img src="images/five.jpg"><h2>Heartbeat Song</h2><p>Kelly Clarkson</p>',
+    ]
+    var curinfo = 0;
+
+    onClick = function() {
+        if ( hover ) {
+
+            $("#info").html(info[curinfo]);
+            $("#info").show();
+            if (curinfo < info.length-1) {
+                curinfo += 1;
+            } else {
+                curinfo = 0;
+            }
+
+        } else {
+            $("#info").hide();
+        }
+    }
+
+    window.addEventListener( "mousedown", onClick )
+
     // Callbacks
 
     o._frame = function() {
@@ -120,6 +147,8 @@ LH.Wrapper = function( o ) {
                 hover = intersects[ 0 ].object;
                 selarr.push(hover);
             }
+        } else {
+            hover = null;
         }
 
         for (var i = 0; i < selarr.length; i++) {
