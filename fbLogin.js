@@ -10,7 +10,7 @@ var graph     = require('fbgraph');
 module.exports.process = function(request, response) {
   // we don't have a code yet
   // so we'll redirect to the oauth dialog
-  if (!req.query.code) {
+  if (!response.query.code) {
     var authUrl = graph.getOauthUrl({
         "client_id":     conf.client_id
       , "redirect_uri":  conf.redirect_uri
