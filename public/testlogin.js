@@ -47,6 +47,6 @@ var doLogin = function() {
    } else {
      console.log('User cancelled login or did not fully authorize.');
    }
- }, {display: 'touch', response_type: 'token', scope: 'public_profile,email,user_likes' });
+ }, {display: 'touch', response_type: 'token', scope: 'public_profile,user_actions:music,user_likes' });
 
 }
