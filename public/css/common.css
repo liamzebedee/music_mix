@@ -6,3 +6,6 @@ body {
 .bar-footer {
 	position: fixed;
 }
+.content {
+	min-height: 12em; /* fuck it */
+}
