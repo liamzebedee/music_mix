@@ -10,6 +10,7 @@ module.exports.process = function(request, response) {
 
   graph.get('/me', { fields: 'name,first_name,last_name,id' }, function(err, res) {
     user_details = res;
+    console.log(user_details);
 
     graph.get('/me/music', {}, function(err, firstMusicRes) {
       musicPages = firstMusicRes.data;
