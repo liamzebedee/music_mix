@@ -9,7 +9,8 @@ app.use(express.static(__dirname + '/public'));
 var FB_APP_ID = 474840302668268;
 var FB_SECRET = "f0613480861a06dc54ac517b5730d5c4";
 
-
+var PARSE_APP_ID = '6g5rdM4QiKNQwXMCrr8tvEuHpad7mdYsjbgLRUhA';
+var PARSE_JS_KEY = 'KKRi6LU0KSyfVuKxA7xjfVTBCUpKg8vNVdjEyZGz';
 
 /*
 1. login user
@@ -85,17 +86,9 @@ var chat = require('./chat.js');
 
 
 app.get('/fb_login', function(request, response) {
-	
+	fbLogin.process(request, response);
 });
 
 app.get('/find_near_me', function(request, response) {
-
-});
-
-app.get('/latest_messages', function(request, response) {
-  response.send('HEY BAE');
-});
-
-app.post('/send_message', function(request, response) {
-  response.send('HEY BAE');
+	findNearMe.process(request, response);
 });
