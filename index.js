@@ -68,11 +68,7 @@ io.on('connection', function(socket) {
 
 // routing
 
-app.get('/', function(request, response) {
-    response.send('/hack');
-});
-
-app.get('/auth/facebook', function(request, response) {
+app.get('/app/', function(request, response) {
     fbLogin.process(request, response);
 });
 

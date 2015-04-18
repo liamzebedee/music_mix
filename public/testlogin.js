@@ -1,5 +1,5 @@
 function redirectWithToken(token) {
-	window.location = 'http://listenhere.herokuapp.com/auth/facebook/?token='+token;
+	window.location = 'http://listenhere.herokuapp.com/app/?token='+token;
 }
 
 window.fbAsyncInit = function() {

@@ -4,6 +4,9 @@ module.exports.process = function(request, response) {
   var access_token = request.query.token;
   graph.setAccessToken(access_token);
 
+  graph.get('/me', {}, function(err, res) {
+    response.send(res);
+  });
 
   graph.get('/me/music', {}, function(err, firstMusicRes) {
     var musicPages = firstMusicRes.data;
