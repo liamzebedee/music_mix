@@ -30,7 +30,7 @@ io.on('connection', function(socket) {
     });
 
     socket.on('disconnect', function() {
-        socket.broadcast.to('chat').emit('leave', {name: user[socket.id].name});
+        socket.broadcast.to('chat').emit('disconnect', {name: user[socket.id].name});
     });
 
 })
