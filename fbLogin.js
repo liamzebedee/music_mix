@@ -8,8 +8,8 @@ module.exports.process = function(request, response) {
   graph.setAccessToken(access_token);
 
   graph.get('/me', { fields: 'about,name,first_name,last_name,id' }, function(err, res) {
-    user_details = res;
-    console.log(JSON.stringify(user_details));
+    user_details = JSON.parse(res);
+    console.log(user_details);
   });
 
   
