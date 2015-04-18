@@ -9,12 +9,8 @@ app.use(express.static(__dirname + '/public'));
 // config
 
 var PORT = process.env.PORT || 5000;
-app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
-app.configure('production', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
+app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+
 var conf = {
     client_id:      '474840302668268'
   , client_secret:  'f0613480861a06dc54ac517b5730d5c4'
