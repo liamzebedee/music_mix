@@ -4,6 +4,7 @@ var express = require('express');
 var app 	= express();
 var server 	= app.listen(PORT);
 var io		= require('socket.io').listen(server);
+var graph     = require('fbgraph');
 
 app.use(express.static(__dirname + '/public'));
 
