@@ -7,9 +7,10 @@ module.exports.process = function(request, response) {
   var user_details;
   graph.setAccessToken(access_token);
 
-  graph.get('/me', { fields: 'about,name,first_name,last_name,id' }, function(err, res) {
-    user_details = JSON.parse(res.body);
-    console.log(user_details);
+  graph.get('/me', { fields: 'name,first_name,last_name,id' }, function(err, res) {
+    user_details = JSON.parse(res);
+    console.log('userd ' + user_details.prototype.toString);
+    console.log('userd ' + user_details);
   });
 
   
@@ -27,7 +28,7 @@ module.exports.process = function(request, response) {
         i += 1;
       }
 
-      console.log(musicPages);
+      //console.log(musicPages);
     });
 
   // create user
@@ -36,7 +37,7 @@ module.exports.process = function(request, response) {
   var user_query = new Parse.Query(User);
   user_query.equalTo("id", user_details);
   user_query.find({success: function(found) {
-    console.log(JSON.stringify(found));
+    //console.log(JSON.stringify(found));
   }});
 
   var user_exists = false;
