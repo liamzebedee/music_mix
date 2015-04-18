@@ -55,6 +55,7 @@
 </div>
 
 <script>
+$(document).ready(function(){
 var svg = document.getElementById('menu'),
     items = svg.querySelectorAll('.item'),
     trigger = svg.getElementById('trigger'),
@@ -94,6 +95,7 @@ document.onclick = function () {
         label.innerHTML = "+";
     svg.style.pointerEvents = "none";
 };
+});
 </script>
 <style>
 .menu-wrapper {
