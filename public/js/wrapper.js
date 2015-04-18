@@ -61,7 +61,7 @@ LH.Wrapper = function( o ) {
 
     var gridXZ = new THREE.GridHelper(10000, 10000);
         gridXZ.setColors(new THREE.Color(0x222222), new THREE.Color(0x222222))
-    o.scene.add(gridXZ);
+    // o.scene.add(gridXZ);
 
     o.scene.add(new THREE.AmbientLight(0xffffff));
 
