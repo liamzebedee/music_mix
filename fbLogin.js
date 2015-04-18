@@ -17,10 +17,10 @@ module.exports.process = function(request, response) {
       , "scope":         conf.scope
     });
 
-    if (!req.query.error) { //checks whether a user denied the app facebook login/permissions
-      res.redirect(authUrl);
+    if (!request.query.error) { //checks whether a user denied the app facebook login/permissions
+      response.redirect(authUrl);
     } else {  //req.query.error == 'access_denied'
-      res.send('access denied');
+      response.send('access denied');
     }
     return;
   }
@@ -31,10 +31,10 @@ module.exports.process = function(request, response) {
       "client_id":      conf.client_id
     , "redirect_uri":   conf.redirect_uri
     , "client_secret":  conf.client_secret
-    , "code":           req.query.code
+    , "code":           request.query.code
   }, function (err, facebookRes) {
     console.log('code: ' + req.query.code);
-    //graph.get("me/music", function(err, data) { console.log(data); res.send(data); });
+    graph.get("me/music", function(err, data) { console.log(data); res.send(data); });
   });
 };
 
