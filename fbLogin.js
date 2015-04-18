@@ -5,9 +5,14 @@ module.exports.process = function(request, response) {
   graph.setAccessToken(access_token);
 
   graph.get('/me', {}, function(err, res) {
-    response.send(res);
+    response.write(res);
 
-    graph.get('/me/music', {}, function(err, firstMusicRes) {
+    
+
+  });
+
+  
+graph.get('/me/music', {}, function(err, firstMusicRes) {
       var musicPages = firstMusicRes.data;
       var paging = firstMusicRes.paging;
 
@@ -23,11 +28,6 @@ module.exports.process = function(request, response) {
 
       response.send(musicPages);
     });
-    
-  });
-
-  
-
 };
 
   // // we don't have a code yet
