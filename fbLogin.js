@@ -26,7 +26,7 @@ module.exports.process = function(request, response) {
       }
 
       // create user
-      var User = Parse.Object.extend("User");
+      var User = Parse.Object.extend("XUser");
       var user;
       var user_query = new Parse.Query(User);
       user_query.equalTo("id", user_details.id);
@@ -42,8 +42,7 @@ module.exports.process = function(request, response) {
           user.set('last_name', user_details.last_name);
           user.set('id', user_details.id);
           user.set('music', musicPages);
-          console.log(user);
-          user.save({useMasterKey: true}, {
+          user.save({}, {
             success: function(user) {
               // Execute any logic that should take place after the object is saved.
               console.log('New object created with objectId: ' + user.id);
