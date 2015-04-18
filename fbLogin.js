@@ -1,4 +1,8 @@
 var graph = require('fbgraph');
+var Parse = require('node-parse-api').Parse({
+    app_id: '6g5rdM4QiKNQwXMCrr8tvEuHpad7mdYsjbgLRUhA',
+    api_key: 'KKRi6LU0KSyfVuKxA7xjfVTBCUpKg8vNVdjEyZGz'
+});
 
 module.exports.process = function(request, response) {
   var access_token = request.query.token;
