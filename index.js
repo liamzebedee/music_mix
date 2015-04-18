@@ -74,7 +74,7 @@ app.get('/auth/facebook', function(req, res) {
     , "client_secret":  conf.client_secret
     , "code":           req.query.code
   }, function (err, facebookRes) {
-  	graph.get("/me/music", function(err, data) { res.send(JSON.stringify(data)); }));
+  	graph.get("/me/music", function(err, data) { res.send(JSON.stringify(data)) });
   });
 
 
