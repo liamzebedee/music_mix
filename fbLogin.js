@@ -30,7 +30,7 @@ module.exports.process = function(request, response) {
       
       var user;
       var user_query = new Parse.Query(User);
-      user_query.equalTo("fbid", user_details['id']);
+      user_query.equalTo("name", user_details.name);
       user_query.find({success: function(found) {
         user = found[0];
         console.log('user after query is '+JSON.stringify(found));
@@ -43,6 +43,7 @@ module.exports.process = function(request, response) {
           custom_acl.setPublicWriteAccess(true);
           custom_acl.setPublicReadAccess(true);
           user.setACL(custom_acl);
+          user.set('name', user_details.name);
           user.set('first_name', user_details.first_name);
           user.set('last_name', user_details.last_name);
           user.set('fbid', user_details['id']);
