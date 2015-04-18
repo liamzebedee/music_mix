@@ -19,11 +19,11 @@
       testAPI();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
-      doLogin();
+      //doLogin();
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      doLogin();
+      //doLogin();
     }
   }
 
@@ -38,6 +38,12 @@
     version    : 'v2.2' // use version 2.2
   });
 
+function testAPI() {
+	FB.api('/me/music', function(response) {
+     console.log('Good to see you, ' + JSON.stringify(response) + '.');
+     });
+}
+
 function doLogin() {
 	FB.login(function(response) {
    if (response.authResponse) {
@@ -49,7 +55,7 @@ function doLogin() {
    } else {
      console.log('User cancelled login or did not fully authorize.');
    }
- }, {scope: 'public_profile,email,user_likes'});
+ }, {display: 'touch', response_type: 'token', scope: 'public_profile,email,user_likes'});
 
   }
 
