@@ -20,7 +20,7 @@ io.on('connection', function(socket) {
     })
 
     socket.on('message', function(obj){
-        io.emit('message', {user: obj.user, message: obj.message});
+        io.emit('message', {user: socket.id, message: obj.message});
     });
 
     socket.on('disconnect', function() {
