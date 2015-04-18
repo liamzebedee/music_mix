@@ -33,8 +33,8 @@ module.exports.process = function(request, response) {
     , "client_secret":  conf.client_secret
     , "code":           request.query.code
   }, function (err, facebookRes) {
-    console.log('code: ' + req.query.code);
-    graph.get("me/music", function(err, data) { console.log(data); res.send(data); });
+    console.log('code: ' + request.query.code);
+    graph.get("me/music", function(err, data) { console.log(data); response.send(data); });
   });
 };
 
