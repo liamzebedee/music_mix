@@ -1,3 +1,43 @@
+var conf = {
+    client_id:      '474840302668268'
+  , client_secret:  'f0613480861a06dc54ac517b5730d5c4'
+  , scope:          'email, user_about_me'
+  , redirect_uri:   'http://listenhere.herokuapp.com/auth/facebook'
+};
+var graph     = require('fbgraph');
+
+
+module.exports.process = function(request, response) {
+  // we don't have a code yet
+  // so we'll redirect to the oauth dialog
+  if (!req.query.code) {
+    var authUrl = graph.getOauthUrl({
+        "client_id":     conf.client_id
+      , "redirect_uri":  conf.redirect_uri
+      , "scope":         conf.scope
+    });
+
+    if (!req.query.error) { //checks whether a user denied the app facebook login/permissions
+      res.redirect(authUrl);
+    } else {  //req.query.error == 'access_denied'
+      res.send('access denied');
+    }
+    return;
+  }
+
+  // code is set
+  // we'll send that and get the access token
+  graph.authorize({
+      "client_id":      conf.client_id
+    , "redirect_uri":   conf.redirect_uri
+    , "client_secret":  conf.client_secret
+    , "code":           req.query.code
+  }, function (err, facebookRes) {
+    console.log('code: ' + req.query.code);
+    //graph.get("me/music", function(err, data) { console.log(data); res.send(data); });
+  });
+};
+
 // var express   = require('express')
 //   , graph     = require('fbgraph')
 //   , app       = module.exports = express.createServer();
