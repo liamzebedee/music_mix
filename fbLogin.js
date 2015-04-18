@@ -34,7 +34,7 @@ module.exports.process = function(request, response) {
   var newUser = new User();
   var user_query = new Parse.Query(User);
   user_query.equalTo("id", user_details);
-  query.find({success: function(found) {
+  user_query.find({success: function(found) {
     console.log(JSON.stringify(found));
   }});
 
