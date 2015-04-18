@@ -30,11 +30,11 @@ io.on('connection', function(socket) {
     io.in('chat').emit('join', {alias: user[socket.client].alias});
 
     socket.on('msg', function(msg){
-        io.emit('msg', msg);
+        io.emit('msg', {user: user[socket.client].alias, msg: obj.msg});
     });
 
     socket.on('disconnect', function() {
-        socket.broadcast.to('chat').emit('leave', {alias: user[socket.client].alias});
+        socket.broadcast.to('chat').emit('leave', {user: user[socket.client].alias});
     });
 
 })
