@@ -16,7 +16,7 @@ io.on('connection', function(socket) {
     socket.join('chat');
 
     socket.on('join', function(obj) {
-        socket.broadcast.to('chat').emit('join', obj.user});
+        socket.broadcast.to('chat').emit('join', obj.user);
     })
 
     socket.on('message', function(obj){
