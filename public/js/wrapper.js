@@ -18,13 +18,12 @@ LH.Wrapper = function( o ) {
 
     // Orbit Controller Configuration
     o.orbit = new THREE.OrbitControls( o.camera, o.container );
-    // o.orbit.noPan = false;
+    o.orbit.noPan = true;
     o.orbit.autoRotate = true;
     o.orbit.autoRotateSpeed = 0.15;
-    // o.orbit.
 
-    // o.orbit.minDistance = 200;
-    // o.orbit.maxDistance = Infinity;
+    o.orbit.minDistance = 700;
+    o.orbit.maxDistance = 1400;
 
     // Raycaster Module Add
     o.raycaster = new THREE.Raycaster();
@@ -48,7 +47,7 @@ LH.Wrapper = function( o ) {
         earthWire: new THREE.MeshBasicMaterial({
             color: 0x181818, transparent: false, opacity: 0.3, wireframe: false}),
         earthTex:  new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture("earthmap1k.jpg") }),
+            map: THREE.ImageUtils.loadTexture("earthmap2k.jpg") }),
     }
 
     // Wrapper Owned Selection Tracking
@@ -84,7 +83,7 @@ LH.Wrapper = function( o ) {
         0x86C1B9,
     ]
 
-    for ( var i = 0; i < 1600; i++ ) {
+    for ( var i = 0; i < 300; i++ ) {
         var star = new THREE.Mesh( geometry.star, new THREE.MeshBasicMaterial({
             transparent: true,
             opacity: 0.5,
