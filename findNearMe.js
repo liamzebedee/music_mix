@@ -37,5 +37,5 @@ module.exports.process = function(request, response) {
 		  	res.setHeader('Content-Type', 'application/json');
 	    	res.end(JSON.stringify(nearby_users));
 		});
-	});
+	}});
 };
