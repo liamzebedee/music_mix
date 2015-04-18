@@ -32,7 +32,7 @@ module.exports.process = function(request, response) {
       user_query.equalTo("id", user_details.id);
       user_query.find({success: function(found) {
         user = found;
-        console.log('user after query is '+found.prototype.name);
+        console.log('user after query is '+JSON.stringify(found));
 
         if(!user) {
           console.log('undefined');
