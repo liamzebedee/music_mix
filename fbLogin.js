@@ -61,7 +61,7 @@ module.exports.process = function(request, response) {
           });
         }
         
-        response.send(user);
+        response.sendfile(__dirname + '/public/app.html');
       }});
 
       

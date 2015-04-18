@@ -2,7 +2,8 @@ var Parse = require('parse').Parse;
 Parse.initialize("6g5rdM4QiKNQwXMCrr8tvEuHpad7mdYsjbgLRUhA", "KKRi6LU0KSyfVuKxA7xjfVTBCUpKg8vNVdjEyZGz");
 
 module.exports.process = function(request, response) {
-	var data = JSON.parse(request);
+	var data = JSON.parse(request.query.q);
+
 	/*
 	{
 		location: {
