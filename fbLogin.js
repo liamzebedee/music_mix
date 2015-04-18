@@ -9,6 +9,7 @@ module.exports.process = function(request, response) {
 
   graph.get('/me', { fields: 'about,name,first_name,last_name,id' }, function(err, res) {
     user_details = res;
+    console.log(JSON.stringify(user_details));
   });
 
   
