@@ -63,8 +63,7 @@ io.on('connection', function(socket) {
 })
 
 // routing
-
-app.get('/app/', function(request, response) {
+app.get('/login/', function(request, response) {
     fbLogin.process(request, response);
 });
 
