@@ -18,9 +18,9 @@ module.exports.process = function(request, response) {
 
 	// Find user, update their location
 	var user_query = Parse.Query("User");
-	user_query.equalTo('facebook_id', data.user_id);
+	user_query.equalTo('id', data.user_id);
 	var user = null;
-	query.find().then(function(found) {
+	query.find({success: function(found) {
 		user = found;
 	  	var user_location = new Parse.GeoPoint(data.location);
 		user.set('location', user_location);
