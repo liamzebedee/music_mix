@@ -13,24 +13,14 @@ var message = [];
 
 io.on('connection', function(socket) {
 
-    if ( !user[socket.client] ) {
-
-        user[socket.client] = {
-            alias: '' + Math.random()*1000,
-            online: true,
-        }
-
-    }
-
-    if ( !user[socket.client].online ) {
-        user[socket.client].online = true;
-    }
-
     socket.join('chat');
-    io.in('chat').emit('join', {user: user[socket.client].alias});
 
-    socket.on('msg', function(msg){
-        io.emit('msg', {user: user[socket.client].alias, msg: msg});
+    socket.on('join', function(obj) {
+        socket.broadcast.to('chat').emit('join', obj.user});
+    })
+
+    socket.on('message', function(obj){
+        io.emit('message', {user: obj.user, message: obj.message});
     });
 
     socket.on('disconnect', function() {

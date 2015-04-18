@@ -22,14 +22,21 @@
     <script src="jquery-1.11.1.js"></script>
     <script>
       var socket = io();
+
+      USER_ID = Math.floor(Math.random()*1000);
+
+      socket.emit('join', {user: USER_ID});
+
       $('form').submit(function(){
-        socket.emit('msg', $('#m').val());
+        socket.emit('message', {user: USER_ID, message: $('#m').val()});
         $('#m').val('');
         return false;
       });
-      socket.on('msg', function(obj){
-        $('#messages').append($('<li>').text(obj.user + ': ' + obj.msg));
+
+      socket.on('message', function(obj){
+        $('#messages').append($('<li>').text(obj.user + ': ' + obj.message));
       });
+      
     </script>
   </body>
 </html>
