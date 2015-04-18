@@ -11,29 +11,29 @@ app.use(express.static(__dirname + '/public'));
 var user = {};
 var message = [];
 
-io.on('connection', function(socket) {
+// io.on('connection', function(socket) {
 
-    if (!user[socket.id]) {
-        user[socket.id] = {
-            name: Math.floor(Math.random()*1000),
-        }
-    }
+//     if (!user[socket.id]) {
+//         user[socket.id] = {
+//             name: Math.floor(Math.random()*1000),
+//         }
+//     }
 
-    socket.join('chat');
+//     socket.join('chat');
 
-    socket.on('join', function(obj) {
-        socket.broadcast.to('chat').emit('join', {name: user[socket.id].name});
-    })
+//     socket.on('join', function(obj) {
+//         socket.broadcast.to('chat').emit('join', {name: user[socket.id].name});
+//     })
 
-    socket.on('message', function(obj){
-        io.emit('message', {name: user[socket.id].name, message: obj.message});
-    });
+//     socket.on('message', function(obj){
+//         io.emit('message', {name: user[socket.id].name, message: obj.message});
+//     });
 
-    socket.on('disconnect', function() {
-        socket.broadcast.to('chat').emit('disconnect', {name: user[socket.id].name});
-    });
+//     socket.on('disconnect', function() {
+//         socket.broadcast.to('chat').emit('disconnect', {name: user[socket.id].name});
+//     });
 
-})
+// })
 
 // config
 
@@ -57,10 +57,10 @@ var PARSE_JS_KEY = 'KKRi6LU0KSyfVuKxA7xjfVTBCUpKg8vNVdjEyZGz';
 var lhNearMe = require('./findNearMe.js');
 var fbLogin = require('./fbLogin.js');
 
-io.on('connection', function(socket) {
-    // console.log(socket.client);
-    // lhChat.new(socket);
-})
+// io.on('connection', function(socket) {
+//     // console.log(socket.client);
+//     // lhChat.new(socket);
+// })
 
 // routing
 app.get('/login/', function(request, response) {
