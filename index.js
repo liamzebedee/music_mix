@@ -1,11 +1,43 @@
 // libs
-var PORT = process.env.PORT || 5000;
+var PORT    = process.env.PORT || 5000;
+
 var express = require('express');
-var app 	= express();
-var server 	= app.listen(PORT);
-var io		= require('socket.io').listen(server);
+var app     = express();
+var server  = app.listen(PORT);
+var io      = require('socket.io').listen(server);
 
 app.use(express.static(__dirname + '/public'));
+
+var user = {};
+var message = [];
+
+io.on('connection', function(socket) {
+
+    if ( !user[socket.client] ) {
+
+        user[socket.client] = {
+            alias: '' + Math.random()*1000,
+            online: true;
+        }
+
+    }
+
+    if ( !user[socket.client].online ) {
+        user[socket.client].online = true;
+    }
+
+    socket.join('chat');
+    io.in('chat').emit('join', {alias: user[socket.client].alias});
+
+    socket.on('msg', function(msg){
+        io.emit('msg', msg);
+    });
+
+    socket.on('disconnect', function() {
+        socket.broadcast.to('chat').emit('leave', {alias: user[socket.client].alias});
+    });
+
+})
 
 // config
 
@@ -30,22 +62,22 @@ var lhNearMe = require('./findNearMe.js');
 var fbLogin = require('./fbLogin.js');
 
 io.on('connection', function(socket) {
-	console.log(socket.client);
-	// lhChat.new(socket);
+    console.log(socket.client);
+    // lhChat.new(socket);
 })
 
 // routing
 
 app.get('/', function(request, response) {
-	response.send('/hack');
+    response.send('/hack');
 });
 
 app.get('/auth/facebook', function(request, response) {
-	fbLogin.process(request, response);
+    fbLogin.process(request, response);
 });
 
 app.get('/find_near_me', function(request, response) {
-	lhNearMe.process(request, response);
+    lhNearMe.process(request, response);
 });
 
 console.log("Node app is running at localhost:" + app.get('port'))
