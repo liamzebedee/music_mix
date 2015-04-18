@@ -1,4 +1,5 @@
 // libs
+var PORT = process.env.PORT || 5000;
 var express = require('express');
 var app 	= express();
 var server 	= app.listen(PORT);
@@ -8,7 +9,6 @@ app.use(express.static(__dirname + '/public'));
 
 // config
 
-var PORT = process.env.PORT || 5000;
 // app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 
 var conf = {
