@@ -1,15 +1,13 @@
 var graph = require('fbgraph');
 
 module.exports.process = function(request, response) {
-  var stuffToSend = '';
+  var stuffToSend = 'dave';
 
   var access_token = request.query.token;
   graph.setAccessToken(access_token);
 
   graph.get('/me', {}, function(err, res) {
-    stuffToSend += JSON.stringify(res);
-
-    
+    console.log(res);
 
   });
 
@@ -28,7 +26,7 @@ graph.get('/me/music', {}, function(err, firstMusicRes) {
         i += 1;
       }
 
-      stuffToSend += JSON.stringify(res);
+      console.log(res);
     });
 
 
