@@ -17,7 +17,7 @@ io.on('connection', function(socket) {
 
         user[socket.client] = {
             alias: '' + Math.random()*1000,
-            online: true;
+            online: true,
         }
 
     }
