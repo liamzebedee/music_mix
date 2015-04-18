@@ -16,10 +16,7 @@
 <script src="js/ionic.bundle.min.js"></script>
 <script src="js/ionic.min.js"></script>
 <script src="js/ionic-angular.js"></script>
-<script src="lib/TweenMax.min.js"></script>
 <script src="js/main.js"></script>
-<script src="lib/raphael-min.js"></script>
-<script src="js/challenge.js"></script>
 
 </head>
 
@@ -27,16 +24,16 @@
 
 
 <div class="bar bar-header bar-energized">
-  <h1 class="title">Find musical styles in your country</h1>
+  <h1 class="title">People's favourite music near you</h1>
 </div>
 
 <footer id="Page--Footer" class="bar bar-footer">
 <div class="tabs tabs-icon-top">
-  <a href="comfort.html" class="tab-item">
+  <a href="comfort.html" class="tab-item active">
     <i class="icon ion-location"></i>
     Comfort
   </a>
-  <a href="challenge.html" class="tab-item active">
+  <a href="challenge.html" class="tab-item">
     <i class="icon ion-android-people"></i>
     Challenge
   </a>
@@ -47,46 +44,40 @@
 </div>
 </footer>
 
-
 <main class="content has-header has-footer padding">
 
-<div class="list list-inset">
-    <div class="item">
-      Raiders of the Lost Ark
-    </div>
+  <div class="list">
+
+    <a class="item item-thumbnail-left" href="#">
+      <img src="images/one.jpg">
+      <h2>1. Uptown Funk!</h2>
+      <p>Mark Ronson Ft. Bruno Mars</p>
+    </a>
+    <a class="item item-thumbnail-left" href="#">
+      <img src="images/two.jpg">
+      <h2>2. Thinking Out Loud</h2>
+      <p>Ed Sheeran</p>
+    </a>
+        <a class="item item-thumbnail-left" href="#">
+      <img src="images/three.jpg">
+      <h2>3. Style</h2>
+      <p>Taylor Swift</p>
+    </a>
+    <a class="item item-thumbnail-left" href="#">
+      <img src="images/four.jpg">
+      <h2>4. One Last Time</h2>
+      <p>Ariana Grande</p>
+    </a>
+        <a class="item item-thumbnail-left" href="#">
+      <img src="images/five.jpg">
+      <h2>5. Heartbeat Song</h2>
+      <p>Kelly Clarkson</p>
+    </a>
+
 </div>
-
-<style>
-#notepad {
-    background: #f7f7f7;
-    width: 500px;
-    height: 500px;
-}
-
-.arc {
-    fill: #999;
-    stroke: #888;
-    cursor: pointer;
-}
-
-.arc:hover {
-    fill: #777;
-    stroke: #666;
-}
-
-#activeArc {
-    fill: #F18B21 !important;
-    stroke: #b86a19 !important;
-}
-</style>
-
-<div id='notepad'></div>
 
 </main>
 
-
-
-</div>
 
 
 
@@ -95,3 +86,4 @@
 
 </body>
 </html>
+
