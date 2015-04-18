@@ -1,42 +1,37 @@
-var conf = {
-    client_id:      '474840302668268'
-  , client_secret:  'f0613480861a06dc54ac517b5730d5c4'
-  , scope:          'email, user_about_me'
-  , redirect_uri:   'http://listenhere.herokuapp.com/auth/facebook'
-};
-var graph     = require('fbgraph');
-
-
 module.exports.process = function(request, response) {
-  // we don't have a code yet
-  // so we'll redirect to the oauth dialog
-  if (!request.query.code) {
-    var authUrl = graph.getOauthUrl({
-        "client_id":     conf.client_id
-      , "redirect_uri":  conf.redirect_uri
-      , "scope":         conf.scope
-    });
 
-    if (!request.query.error) { //checks whether a user denied the app facebook login/permissions
-      response.redirect(authUrl);
-    } else {  //req.query.error == 'access_denied'
-      response.send('access denied');
-    }
-    return;
-  }
+  // render form
 
-  // code is set
-  // we'll send that and get the access token
-  graph.authorize({
-      "client_id":      conf.client_id
-    , "redirect_uri":   conf.redirect_uri
-    , "client_secret":  conf.client_secret
-    , "code":           request.query.code
-  }, function (err, facebookRes) {
-    console.log('code: ' + request.query.code);
-    graph.get("me/music", function(err, data) { console.log(data); response.send(data); });
-  });
 };
+
+  // // we don't have a code yet
+  // // so we'll redirect to the oauth dialog
+  // if (!request.query.code) {
+  //   var authUrl = graph.getOauthUrl({
+  //       "client_id":     conf.client_id
+  //     , "redirect_uri":  conf.redirect_uri
+  //     , "scope":         conf.scope
+  //   });
+
+  //   if (!request.query.error) { //checks whether a user denied the app facebook login/permissions
+  //     response.redirect(authUrl);
+  //   } else {  //req.query.error == 'access_denied'
+  //     response.send('access denied');
+  //   }
+  //   return;
+  // }
+
+  // // code is set
+  // // we'll send that and get the access token
+  // graph.authorize({
+  //     "client_id":      conf.client_id
+  //   , "redirect_uri":   conf.redirect_uri
+  //   , "client_secret":  conf.client_secret
+  //   , "code":           request.query.code
+  // }, function (err, facebookRes) {
+  //   console.log('code: ' + request.query.code);
+  //   graph.get("me/music", function(err, data) { console.log(data); response.send(data); });
+  // });
 
 // var express   = require('express')
 //   , graph     = require('fbgraph')
