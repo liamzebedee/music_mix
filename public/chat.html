@@ -23,9 +23,7 @@
     <script>
       var socket = io();
 
-      USER_ID = Math.floor(Math.random()*1000);
-
-      socket.emit('join', {user: USER_ID});
+      socket.emit('join');
 
       $('form').submit(function(){
         socket.emit('message', {user: USER_ID, message: $('#m').val()});
@@ -35,6 +33,14 @@
 
       socket.on('message', function(obj){
         $('#messages').append($('<li>').text(obj.user + ': ' + obj.message));
+      });
+
+      socket.on('join', function(obj){
+        $('#messages').append($('<li>').text(obj.user + ' ... has joined the chat.'));
+      });
+
+      socket.on('disconnect', function(obj){
+        $('#messages').append($('<li>').text(obj.user + ' ... has left the chat.'));
       });
       
     </script>

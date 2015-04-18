@@ -13,18 +13,24 @@ var message = [];
 
 io.on('connection', function(socket) {
 
+    if (!user[socket.id]) {
+        user[socket.id] = {
+            name: Math.floor(Math.random()*1000),
+        }
+    }
+
     socket.join('chat');
 
     socket.on('join', function(obj) {
-        socket.broadcast.to('chat').emit('join', obj.user);
+        socket.broadcast.to('chat').emit('join', user[socket.id]);
     })
 
     socket.on('message', function(obj){
-        io.emit('message', {user: socket.id, message: obj.message});
+        io.emit('message', {user: user[socket.id], message: obj.message});
     });
 
     socket.on('disconnect', function() {
-        socket.broadcast.to('chat').emit('leave');
+        socket.broadcast.to('chat').emit('leave', user[socket.id]);
     });
 
 })
