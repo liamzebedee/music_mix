@@ -9,6 +9,8 @@ Node.JS will statically serve the website interface
 - All buttons and functionality will be stubbed until the back end functions.
 Node.JS coupled with Socket.IO will provide chat functionality and live updating of the clients with the Facebook functionality.
 
+http://www.last.fm/api
+
 UX Pathway
 ----------
 1 - Login user
