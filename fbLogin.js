@@ -10,10 +10,8 @@ module.exports.process = function(request, response) {
 
   graph.get('/me', { fields: 'name,first_name,last_name,id' }, function(err, res) {
     user_details = res;
-  });
 
-  
-  graph.get('/me/music', {}, function(err, firstMusicRes) {
+    graph.get('/me/music', {}, function(err, firstMusicRes) {
       musicPages = firstMusicRes.data;
       var paging = firstMusicRes.paging;
 
@@ -26,25 +24,31 @@ module.exports.process = function(request, response) {
         });
         i += 1;
       }
+
+      // create user
+      var User = Parse.Object.extend("User");
+      var user;
+      var user_query = new Parse.Query(User);
+      user_query.equalTo("id", user_details);
+      user_query.find({success: function(found) {
+        user = found;
+      }});
+
+      var user_exists = false;
+      if(!user_exists) {
+        user = new User();
+        user.set('first_name', user_details.first_name);
+        user.set('last_name', user_details.last_name);
+        user.set('id', user_details.id);
+        user.set('music', musicPages);
+        user.save();
+      }
+      response.send(user);
     });
 
-  // create user
-  var User = Parse.Object.extend("User");
-  var user;
-  var user_query = new Parse.Query(User);
-  user_query.equalTo("id", user_details);
-  user_query.find({success: function(found) {
-    user = found;
-  }});
+  });
 
-  var user_exists = false;
-  if(!user_exists) {
-    user = new User();
-    user.set('first_name', user_details.first_name);
-    user.set('last_name', user_details.last_name);
-    user.set('id', user_details.id);
-    user.set('music', musicPages);
-    user.save();
-  }
+  
+
 
 };
