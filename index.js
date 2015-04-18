@@ -1,3 +1,10 @@
+// libs
+var express = require('express');
+var app 	= express();
+var server 	= app.listen(PORT);
+var io		= require('socket.io').listen(server);
+
+app.use(express.static(__dirname + '/public'));
 
 // config
 
@@ -14,15 +21,6 @@ var conf = {
   , scope:          'email, user_about_me'
   , redirect_uri:   'http://listenhere.herokuapp.com/app/'
 };
-
-// libraries
-
-var express = require('express');
-var app 	= express();
-var server 	= app.listen(PORT);
-var io		= require('socket.io').listen(server);
-
-app.use(express.static(__dirname + '/public'));
 
 // constants
 
