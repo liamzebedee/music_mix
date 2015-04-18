@@ -60,7 +60,7 @@ module.exports.process = function(request, response) {
           });
         }
         
-        response.redirect('/app.html');
+        response.redirect('/comfort.html');
       }});
 
       
