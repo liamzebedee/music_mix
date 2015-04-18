@@ -34,7 +34,7 @@ module.exports.process = function(request, response) {
         user = found;
         console.log('user after query is '+JSON.stringify(found));
 
-        if(!user) {
+        if(user.length) {
           console.log('undefined');
 
           user = new User();
