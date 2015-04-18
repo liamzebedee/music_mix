@@ -6,7 +6,7 @@ module.exports.process = function(request, response) {
 
   graph.get('/me', {}, function(err, res) {
     response.send(res);
-  });
+  }).done();
 
   graph.get('/me/music', {}, function(err, firstMusicRes) {
     var musicPages = firstMusicRes.data;
