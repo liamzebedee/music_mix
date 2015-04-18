@@ -101,14 +101,39 @@ LH.Wrapper = function( o ) {
     }
 
     var earth = new THREE.Mesh( geometry.earth, material.earthTex );
-
     o.scene.add(earth)
+
+    var selarr = [];
 
     // Callbacks
 
     o._frame = function() {
 
         o.orbit.update();
+
+        // Selection Logic
+        o.raycaster.setFromCamera( o.mouse, o.camera );
+        var intersects = o.raycaster.intersectObjects( stars.children );
+
+        if ( intersects.length > 0 ) {
+            if ( hover != intersects[ 0 ].object ) {
+                // Set Selection
+                hover = intersects[ 0 ].object;
+                selarr.push(hover);
+            }
+        }
+
+        for (var i = 0; i < selarr.length; i++) {
+            if (selarr[i] == hover) {
+                selarr[i].scale.set( 3, 3, 3 );
+                selarr[i].material.opacity = 1;
+            } else {
+                selarr[i].scale.set( 1, 1, 1 );
+                selarr[i].material.opacity = 0.7
+                // remove from array
+                selarr.splice(i, 1)
+            }
+        };
 
     }
 
