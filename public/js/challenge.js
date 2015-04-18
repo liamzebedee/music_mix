@@ -5,7 +5,7 @@ var arc = {
     path: 'M53.286,44.333L69.081,7.904C48.084-1.199,23.615-2.294,0.648,6.78l14.59,36.928C28.008,38.662,41.612,39.27,53.286,44.333z'
 };
 
-var paper = Raphael(document.getElementById("notepad"), 500, 500);
+var paper = Raphael(document.getElementById("notepad"), 800, 800);
 
 var arcDegrees = 45;
 var centerX = 210;
