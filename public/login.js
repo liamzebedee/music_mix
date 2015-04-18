@@ -1,3 +1,7 @@
+function redirectWithToken(token) {
+	window.location = 'http://listenhere.herokuapp.com/app/?token='
+}
+
 window.fbAsyncInit = function() {
   FB.init({
     appId      : '474840302668268',
@@ -10,6 +14,8 @@ window.fbAsyncInit = function() {
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
+      var access_token =   FB.getAuthResponse()['accessToken'];
+      console.log('Access Token = '+ access_token);
       testAPI();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
@@ -40,6 +46,6 @@ var doLogin = function() {
    } else {
      console.log('User cancelled login or did not fully authorize.');
    }
- }, {display: 'touch', response_type: 'token', scope: 'public_profile,email,user_likes'});
+ }, {display: 'touch', response_type: 'token', scope: 'public_profile,email,user_likes', redirect_uri: 'http://listenhere.herokuapp.com/auth/facebook'});
 
 }
