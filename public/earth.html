@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Listen Here - Earth</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="font/proxima-nova/font.css">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- LIBRARY -->
+    <script src="lib/jquery-1.11.2.min.js"></script>
+    <!-- THREE -->
+    <script src="lib/three.min.js"></script>
+    <script src="lib/control/orbit.js"></script>
+    <!-- LH -->
+    <script src="js/strap.js"></script>
+    <script src="js/wrapper.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div class="notify"><img src="img/load.gif"><br/><br/>Loading...</div>
+    </div>
+    <script type="text/javascript">   
+
+        $("#container").height($(window).height()*(5/7));
+
+        var bootstrap = new THREE.Strap( document.getElementById("container") );
+
+        if ( bootstrap ) {
+
+            LH.Wrapper( bootstrap );
+            bootstrap.init();
+
+        }
+
+    </script>
+    <script type="text/javascript">
+        
+    </script>
+</body>
+</html>
