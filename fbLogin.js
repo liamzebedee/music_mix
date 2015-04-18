@@ -32,14 +32,18 @@ module.exports.process = function(request, response) {
       user_query.equalTo("id", user_details.id);
       user_query.find({success: function(found) {
         user = found;
+        console.log('user after query is '+found);
 
         if(user == undefined || !user) {
+          console.log('undefined');
+
           user = new User();
           user.set('first_name', user_details.first_name);
           user.set('last_name', user_details.last_name);
           user.set('id', user_details.id);
           user.set('music', musicPages);
-          user.save(null, {
+          console.log(user);
+          user.save({useMasterKey: true}, {
             success: function(user) {
               // Execute any logic that should take place after the object is saved.
               console.log('New object created with objectId: ' + user.id);
