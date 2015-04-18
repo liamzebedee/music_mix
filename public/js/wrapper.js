@@ -83,7 +83,7 @@ LH.Wrapper = function( o ) {
         0x86C1B9,
     ]
 
-    for ( var i = 0; i < 1600; i++ ) {
+    for ( var i = 0; i < 900; i++ ) {
         var star = new THREE.Mesh( geometry.star, new THREE.MeshBasicMaterial({
             transparent: true,
             opacity: 0.5,
