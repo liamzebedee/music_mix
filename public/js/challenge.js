@@ -1,3 +1,4 @@
+$(document).ready(function(){
 var arc = {
     fill: '#333',
     stroke: '#333',
@@ -49,3 +50,4 @@ for (i = 0; i < 360; i += arcDegrees) {
         .data('direction-label', direction.label)
         .on('click', arcClicked);
 }
+});
