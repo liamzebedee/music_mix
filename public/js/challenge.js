@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$( window ).load(function() {
 var arc = {
     fill: '#333',
     stroke: '#333',
