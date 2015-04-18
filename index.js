@@ -52,17 +52,13 @@ var lhNearMe = require('./findNearMe.js');
 var fbLogin = require('./fbLogin.js');
 
 io.on('connection', function(socket) {
-    console.log(socket.client);
+    // console.log(socket.client);
     // lhChat.new(socket);
 })
 
 // routing
 
-app.get('/', function(request, response) {
-    response.send('/hack');
-});
-
-app.get('/auth/facebook', function(request, response) {
+app.get('/app/', function(request, response) {
     fbLogin.process(request, response);
 });
 

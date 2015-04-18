@@ -1,7 +1,5 @@
-var Parse = require('node-parse-api').Parse({
-    app_id: '6g5rdM4QiKNQwXMCrr8tvEuHpad7mdYsjbgLRUhA',
-    api_key: 'KKRi6LU0KSyfVuKxA7xjfVTBCUpKg8vNVdjEyZGz'
-});
+var Parse = require('parse').Parse;
+Parse.initialize("6g5rdM4QiKNQwXMCrr8tvEuHpad7mdYsjbgLRUhA", "KKRi6LU0KSyfVuKxA7xjfVTBCUpKg8vNVdjEyZGz");
 
 module.exports.process = function(request, response) {
 	var data = JSON.parse(request);
@@ -18,12 +16,13 @@ module.exports.process = function(request, response) {
 
 	// Find user, update their location
 	var user_query = Parse.Query("User");
-	user_query.equalTo('facebook_id', data.user_id);
+	user_query.equalTo('id', data.user_id);
 	var user = null;
-	query.find().then(function(found) {
+	query.find({success: function(found) {
 		user = found;
 	  	var user_location = new Parse.GeoPoint(data.location);
 		user.set('location', user_location);
+		user.save();
 
 		// Find nearby users
 		var users_query = new Parse.Query("User");
@@ -32,10 +31,10 @@ module.exports.process = function(request, response) {
 		users_query.withinKilometers("location", user_location, DISTANCE);
 		users_query.limit(1000);
 		users_query.containedIn('music', user.get('music'));
-		users_query.find().then(function(found) {
+		users_query.find({success: function(found) {
 		  	nearby_users = found;
 		  	res.setHeader('Content-Type', 'application/json');
-	    	res.end(JSON.stringify(nearby_users));
-		});
-	});
+	    	res.send(JSON.stringify(nearby_users));
+		}});
+	}});
 };

@@ -1,5 +1,5 @@
 function redirectWithToken(token) {
-	window.location = 'http://listenhere.herokuapp.com/auth/facebook/?token='+token;
+	window.location = 'http://listenhere.herokuapp.com/app/?token='+token;
 }
 
 window.fbAsyncInit = function() {
@@ -47,6 +47,6 @@ var doLogin = function() {
    } else {
      console.log('User cancelled login or did not fully authorize.');
    }
- }, {display: 'touch', response_type: 'token', scope: 'public_profile,email,user_likes' });
+ }, {response_type: 'token', scope: 'public_profile,user_likes,user_actions:music' });
 
 }
