@@ -37,7 +37,7 @@ app.get('/fb_login', function(request, response) {
 });
 
 app.get('/find_near_me', function(request, response) {
-	findNearMe.process(request, response);
+	lhNearMe.process(request, response);
 });
 
 app.listen(app.get('port'), function() {
