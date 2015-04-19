@@ -1,5 +1,5 @@
 var Parse = require('parse').Parse;
-Parse.initialize("6g5rdM4QiKNQwXMCrr8tvEuHpad7mdYsjbgLRUhA", "KKRi6LU0KSyfVuKxA7xjfVTBCUpKg8vNVdjEyZGz");
+Parse.initialize("app_id", "js_secret");
 
 module.exports.process = function(request, response) {
 	var data = JSON.parse(request.query.q);
